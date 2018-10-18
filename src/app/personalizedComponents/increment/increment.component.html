@@ -1,0 +1,10 @@
+<div class='card-title'>
+    <h3>{{legend}}</h3>
+</div>
+<div class="input-group">
+    <input #txtPercent type="number" name='percent' min='1' max='100' [(ngModel)]="percent" (ngModelChange)='onChange($event)'>
+    <div class="input-group-append" id="button-addon4">
+        <button (click)='increaseNumber()' class="btn btn-outline-primary" type="button"><i class='mdi mdi-plus'></i></button>
+        <button (click)='decreaseNumber()' class="btn btn-outline-primary" type="button"><i class='mdi mdi-minus'></i></button>
+    </div>
+</div>

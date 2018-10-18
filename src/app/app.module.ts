@@ -8,19 +8,25 @@ import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.compo
 import { RegisterComponent } from './pages/register/register.component';
 //Modules
 import { BrowserModule } from "@angular/platform-browser";
+import {FormsModule} from '@angular/forms';
 import { PagesModule } from "./pages/pages.module";
 //Routes
 import { APPROUTES } from "./app.routes";
+
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NoPageFoundComponent,
-    RegisterComponent,   
+    RegisterComponent,
+  
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     APPROUTES,
     PagesModule,
   ],
