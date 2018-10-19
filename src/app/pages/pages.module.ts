@@ -12,7 +12,6 @@ import { Chart1Component } from './chart1/chart1.component';
 import { IncrementComponent } from '../personalizedComponents/increment/increment.component';
 import { DognhutChartComponent } from '../personalizedComponents/dognhut-chart/dognhut-chart.component';
 
-
 //Routes
 import { PAGES_ROUTES } from "./pages.routes";
 
@@ -20,6 +19,7 @@ import { PAGES_ROUTES } from "./pages.routes";
 import { FormsModule } from "@angular/forms";
 import { ChartsModule } from "ng2-charts";
 import { SharedModule } from '../shared/shared.module';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
  
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { SharedModule } from '../shared/shared.module';
     ProgressComponent,
     Chart1Component,
     IncrementComponent,
-    DognhutChartComponent
+    DognhutChartComponent,
+    AccountSettingsComponent
   ],
   exports: [DashboardComponent, ProgressComponent, Chart1Component,PagesComponent,DognhutChartComponent],
   imports: [SharedModule,PAGES_ROUTES,FormsModule,ChartsModule]
