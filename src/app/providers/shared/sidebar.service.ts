@@ -5,15 +5,18 @@ import { Injectable } from '@angular/core';
   providedIn: "root"
 })
 export class SidebarService {
-
   menu: any = [
-    {title: "section1",
-     icon:"mdi mdi-gauge",
+    {
+      title: "section1",
+      icon: "mdi mdi-gauge",
       submenu: [
         { title: "Dashboard", url: "/dashboard" },
         { title: "ProgressBar", url: "/progress" },
-        { title: "Charts", url: "/chart1" }
-      ]}
+        { title: "Charts", url: "/chart1" },
+        { title: "Promises", url: "/promises" },
+        { title: "Rxjs", url: "/rxjs" }
+      ]
+    }
   ];
 
   constructor() {}

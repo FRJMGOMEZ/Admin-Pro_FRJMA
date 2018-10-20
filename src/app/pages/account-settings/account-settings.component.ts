@@ -37,7 +37,7 @@ export class AccountSettingsComponent {
     this.applyCheck(link);
   }
 
-  applyCheck(link: any) {console.log(this.selectores);
+  applyCheck(link: any) {
 
     for (let ref of this.selectores) {
       
