@@ -15,16 +15,17 @@ export class BreadcrumbsComponent  {
 
   constructor(public router:Router, public headerTitle:Title,private meta:Meta) {
     
-    this.getDataRote().subscribe(event=>{
+    this.getDataRoute().subscribe(event=>{
                                   this.title=event.title;
                                   this.headerTitle.setTitle(this.title);
                                   const metaTag:MetaDefinition={
                                     name:event.description,
                                     content:this.title};
-                                  this.meta.updateTag(metaTag)})
+                                  this.meta.updateTag(metaTag)
+                                })
 }
 
-getDataRote(){
+getDataRoute(){
 
 return this.router.events.pipe(filter(event=> event instanceof ActivationEnd),
                             filter((event:ActivationEnd)=>event.snapshot.firstChild === null),

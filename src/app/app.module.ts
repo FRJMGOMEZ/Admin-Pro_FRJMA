@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 //Components
 import { LoginComponent } from './login/login.component';
 import { NoPageFoundComponent } from './shared/no-page-found/no-page-found.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { RegisterComponent } from './login/register.component';
 
 //Modules from @angular
 import { BrowserModule } from "@angular/platform-browser";
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //Modules(customized)
 import { PagesModule } from "./pages/pages.module";
@@ -25,16 +25,17 @@ import { APPROUTES } from "./app.routes";
     AppComponent,
     LoginComponent,
     NoPageFoundComponent,
-    RegisterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     APPROUTES,
     PagesModule,
-    ProvidersModule
+    ProvidersModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

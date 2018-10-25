@@ -41,7 +41,6 @@ export class AccountSettingsComponent {
 
     for (let ref of this.selectores) {
       
-
       ref.classList.remove("working");
 
       link.classList.add("working");
