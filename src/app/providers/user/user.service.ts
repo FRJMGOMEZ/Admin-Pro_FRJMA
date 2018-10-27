@@ -5,6 +5,7 @@ import { URL_SERVICES } from '../../config/config';
 import { filter ,map} from 'rxjs/operators';
 import swal from "sweetalert";
 import { Router } from '@angular/router';
+import { UploadFileService } from '../uploadFiles/upload-file.service';
 
 @Injectable({
   providedIn: "root"
@@ -13,8 +14,8 @@ export class UserService {
   user: User;
   token: string;
 
-  constructor(public http: HttpClient, public router:Router) {
-    this.updateFromStorage();
+  constructor(public http: HttpClient, public router:Router, public _uploadFileService:UploadFileService) {
+    this.updateFromStorage()
   }
 
   isLogged() {
@@ -32,6 +33,7 @@ export class UserService {
   }
 
   saveInStorage(id: string, userDb: User, token: string) {
+    
     localStorage.setItem("idAdminPro", id);
     localStorage.setItem("userAdminPro", JSON.stringify(userDb));
     localStorage.setItem("tokenAdminPro", token);
@@ -62,7 +64,7 @@ export class UserService {
 
     return this.http.post(url, user).pipe(
       map((res: any) => {
-        this.saveInStorage(res.userDb_id, res.userDb, res.token);
+        this.saveInStorage(res.userDb._id, res.userDb, res.token);
         return res.userDb;
       })
     );
@@ -73,7 +75,7 @@ export class UserService {
 
     return this.http.post(url, { token }).pipe(
       map((res: any) => {
-        this.saveInStorage(res.userDb_id, res.userDb, res.token);
+        this.saveInStorage(res.userDb._id, res.userDb, res.token);
         return true;
       })
     );
@@ -88,5 +90,18 @@ export class UserService {
      localStorage.removeItem("idAdminPro");
 
     this.router.navigate(["/login"]);
+  }
+
+  uploadChanges(type:string,id:string,changes){
+   
+   let url = `${URL_SERVICES}/${type}/${id}?token=${this.token}`;
+
+    return this.http.put(url,changes)
+    .pipe(map((res:any)=>{
+      swal("USER SUCCESSFULLY UPDATED", res.userDb.name, "success");
+        this.saveInStorage(res.userDb._id,res.userDb,this.token);
+        return true
+     
+    }))
   }
 }

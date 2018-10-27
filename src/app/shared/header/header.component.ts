@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../providers/services.index';
+import { Component} from '@angular/core';
+import { User } from '../../models/user.model';
+import { UserService } from 'src/app/providers/user/user.service';
+
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
+  selector: "app-header",
+  templateUrl: "./header.component.html",
   styles: []
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor(public _userService:UserService) { }
-
-  ngOnInit() {
+  constructor(public _userService: UserService) {
   }
-
+ 
 }

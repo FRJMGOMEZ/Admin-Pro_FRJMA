@@ -20,12 +20,13 @@ import { ProvidersModule } from "./providers/providers.module";
 import { APPROUTES } from "./app.routes";
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NoPageFoundComponent,
-    RegisterComponent
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

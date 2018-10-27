@@ -4,8 +4,8 @@ import { filter ,map} from 'rxjs/operators';
 import { Title, Meta, MetaDefinition } from "@angular/platform-browser";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import swal from "sweetalert";
-import { UserService } from '../providers/services.index';
 import { User } from '../models/user.model';
+import { UserService } from 'src/app/providers/user/user.service';
 
 
 declare function initPluggins()

@@ -1,6 +1,7 @@
 import { Component,Inject } from '@angular/core';
-import { SettingsService} from './providers/services.index';
+
 import { DOCUMENT } from "@angular/platform-browser";
+import { SettingsService } from './providers/settings/settings.service';
 
 @Component({
   selector: "app-root",
