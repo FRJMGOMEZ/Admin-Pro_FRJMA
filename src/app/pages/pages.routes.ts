@@ -10,6 +10,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { ProfileComponent } from './profile/profile.component';
 import { LoginGuard } from '../providers/guards/login-guard.ts.guard';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -57,6 +58,12 @@ const pagesRoutes: Routes = [
         path: "profile",
         component: ProfileComponent,
         data: { title: "USER PROFILE" }
+      },
+      ///Manteinance
+      {
+        path: "users",
+        component: UsersComponent,
+        data: { title: "MANTEINANCE OF USERS" }
       },
       { path: "", redirectTo: "/dashboard", pathMatch: "full" }
     ]

@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
         changes={name:userForm.name,
                  email:userForm.email}
       }
-      this._userServices.uploadChanges('user',this.user._id,changes).subscribe(userDb=>{
+      this._userServices.uploadChanges('user',this.user._id,changes).subscribe(userSaved=>{
         
        })
  }
@@ -59,10 +59,11 @@ export class ProfileComponent implements OnInit {
 
    if(!file){this.imgUpload=null;return}
 
-
    if(file.type.indexOf('image')<0){
-    swal('JUST IMAGES','THE SELECTED FILE IS NOT AN IMAGE','error');
     this.imgUpload = null;
+
+    swal('JUST IMAGES','THE SELECTED FILE IS NOT AN IMAGE','error');
+
     return;
    }
 
@@ -70,14 +71,9 @@ export class ProfileComponent implements OnInit {
 
    let reader = new FileReader();
    let urlImgTemp = reader.readAsDataURL(file);
-   
    reader.onloadend = ()=>{
-
     this.temporalImage=reader.result;
    }
-
-   console.log(this.imgUpload);
-
    //this.temporalImage
  }
 
@@ -88,14 +84,10 @@ export class ProfileComponent implements OnInit {
 
   this._uploadFilesService.uploadFile(this.imgUpload,'users',id,token)
      .then(res=>{
+        this._userServices.saveInStorage(res['userUpdated']._id,res['userUpdated'],token)
 
-      console.log(res);
-
-  this._userServices.saveInStorage(res['userUpdated']._id,res['userUpdated'],token)
-
-  swal('IMAGE SUCCESFULLY UPDATED',res['userUpdated'].img, "success")
-      
-    })
+        swal('IMAGE SUCCESFULLY UPDATED',res['userUpdated'].img, "success")   
+        })
      .catch(res=>{console.log(res)})
  }
 }

@@ -10,7 +10,6 @@ declare function initPluggins()
 })
 export class PagesComponent implements OnInit {
   constructor( public router:Router) {
-    console.log("PAGES COMPONENT");
   }
 
   ngOnInit() {

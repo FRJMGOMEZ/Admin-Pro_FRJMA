@@ -11,7 +11,7 @@ import { SettingsService } from './providers/settings/settings.service';
 export class AppComponent {
   constructor(
     public _settingService: SettingsService,
-  ) {console.log('APP-COMPONENT')}
+  ) {}
 
   }
 

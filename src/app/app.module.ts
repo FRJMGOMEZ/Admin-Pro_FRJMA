@@ -19,8 +19,6 @@ import { ProvidersModule } from "./providers/providers.module";
 //Routes
 import { APPROUTES } from "./app.routes";
 
-
-
 @NgModule({
   declarations: [
     AppComponent,

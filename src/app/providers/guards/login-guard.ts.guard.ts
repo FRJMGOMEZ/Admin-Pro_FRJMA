@@ -15,8 +15,6 @@ export class LoginGuard implements CanActivate {
     ):  boolean {
 
       if (this._userService.isLogged()) {
-
-        console.log('ACCEPTED BY GUARD')
         return true
       }
       else{

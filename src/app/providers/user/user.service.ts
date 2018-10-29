@@ -65,21 +65,22 @@ export class UserService {
     return this.http.post(url, user).pipe(
       map((res: any) => {
         this.saveInStorage(res.userDb._id, res.userDb, res.token);
-        return res.userDb;
+        return true;
       })
     );
   }
 
   loginByGoogle(token: string) {
     let url = `${URL_SERVICES}/login/google`;
-
-    return this.http.post(url, { token }).pipe(
+    return this.http.post(url, { token })
+     .pipe(
       map((res: any) => {
         this.saveInStorage(res.userDb._id, res.userDb, res.token);
         return true;
       })
     );
   }
+
   logOut() {
     
     this.user=null;
@@ -92,16 +93,48 @@ export class UserService {
     this.router.navigate(["/login"]);
   }
 
-  uploadChanges(type:string,id:string,changes){
+  uploadChanges(type:string,id:string,changes:Object){
    
    let url = `${URL_SERVICES}/${type}/${id}?token=${this.token}`;
 
     return this.http.put(url,changes)
     .pipe(map((res:any)=>{
-      swal("USER SUCCESSFULLY UPDATED", res.userDb.name, "success");
-        this.saveInStorage(res.userDb._id,res.userDb,this.token);
-        return true
-     
+
+      swal("USER SUCCESSFULLY UPDATED", res.userSaved.name, "success");
+
+        if(res.userSaved._id === id){
+          return true
+        }
+        else {
+          this.saveInStorage(res.userSaved._id, res.userSaved, this.token);
+          return true
+        }     
     }))
   }
+
+  getItems (type:string,from:number=0) {
+
+    let url =`${URL_SERVICES}/${type}?from=${from}&limit=5`;
+
+   return this.http.get(url)
+                 
+  }
+
+  searchItems(type:string,input:string){
+
+    let url = `${URL_SERVICES}/search/collection/${type}/${input}`;
+
+    return this.http.get(url)
+  }
+
+  deleteItem(type:string,id:string){
+
+     let url = `${URL_SERVICES}/${type}/${id}?token=${this.token}`
+
+     return this.http.delete(url)
+                     .pipe(map(()=>{
+                        swal("USER DELETED", this.user.email, "success");
+                        return true
+                     }))
+  } 
 }
